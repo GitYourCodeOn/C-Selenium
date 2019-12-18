@@ -17,7 +17,9 @@ namespace TestTestFrame.Hooks
         public void startBrowser()
         {
             new DriverManager().SetUpDriver(new ChromeConfig());
-            WebDriver.Driver = new ChromeDriver();
+            ChromeOptions option = new ChromeOptions();
+            option.AddArgument("--headless");
+            WebDriver.Driver = new ChromeDriver(option);
             WebDriver.Driver.Manage().Window.Maximize();
             WebDriver.Driver.Navigate().GoToUrl("https://www.bbc.co.uk/");
 
