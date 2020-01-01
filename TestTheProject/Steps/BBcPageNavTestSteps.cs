@@ -13,11 +13,16 @@ namespace TestTestFrame.Steps
     public class BBcPageNavTestSteps : BasePage
 
     {
+        private IWebDriver webDriver;
+        public BBcPageNavTestSteps(IWebDriver driver)
+        {
+            webDriver = driver;
+        }
 
         [Given(@"I am on the BBc HomePage")]
         public void GivenIAmOnTheBBcHomePage()
         {
-            CurrentPage = GetInstance<HomePage>();
+            CurrentPage = new HomePage(webDriver);
             
 
         }

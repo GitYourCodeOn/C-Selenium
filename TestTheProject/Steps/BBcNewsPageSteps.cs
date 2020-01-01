@@ -1,5 +1,6 @@
 ﻿using FrameWork.Base;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using TechTalk.SpecFlow;
 using TestTestFrame.Pages;
@@ -9,10 +10,17 @@ namespace TestTestFrame.Steps
     [Binding]
     public class BBcNewsPageSteps : BasePage
     {
+        public IWebDriver webDriver;
+
+        public BBcNewsPageSteps(IWebDriver driver)
+        {
+            webDriver = driver;
+        }
+
         [Given(@"I am on the homePage")]
         public void GivenIAmOnTheHomePage()
         {
-            CurrentPage = GetInstance<HomePage>();
+            CurrentPage = new HomePage(webDriver);
 
 
         }

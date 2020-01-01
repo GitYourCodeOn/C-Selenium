@@ -1,14 +1,22 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace FrameWork.Base
 {
-    public static class CustomWaits
+    public  class CustomWaits
     {
-        public static void implicitWait(int time)
+        private IWebDriver webDriver;
+
+        public CustomWaits(IWebDriver driver)
         {
-            WebDriver.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(time);
+            webDriver = driver;
+        }
+
+        public void implicitWait(int time)
+        {
+            webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(time);
         }
     }
 }

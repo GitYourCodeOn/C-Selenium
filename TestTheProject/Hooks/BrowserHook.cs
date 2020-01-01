@@ -1,5 +1,7 @@
 ﻿
+using BoDi;
 using FrameWork.Base;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
@@ -13,21 +15,31 @@ namespace TestTestFrame.Hooks
     [Binding]
     public class BrowserHooks : BasePage
     {
+        private readonly IObjectContainer oBjectContainer;
+
+        private IWebDriver webDriver;
+
+        public BrowserHooks(IObjectContainer _oBjectContainer)
+        {
+            oBjectContainer = _oBjectContainer;
+        }
+
         [BeforeScenario(Order = 2)]
         public void startBrowser()
         {
             new DriverManager().SetUpDriver(new ChromeConfig());
             ChromeOptions option = new ChromeOptions();
             option.AddArgument("--headless");
-            WebDriver.Driver = new ChromeDriver(option);
-            WebDriver.Driver.Manage().Window.Maximize();
-            WebDriver.Driver.Navigate().GoToUrl("https://www.bbc.co.uk/");
+            webDriver = new ChromeDriver(option);
+            webDriver.Manage().Window.Maximize();
+            webDriver.Navigate().GoToUrl("https://www.bbc.co.uk/");
+            oBjectContainer.RegisterInstanceAs<IWebDriver>(webDriver);
 
         }
         [AfterScenario(Order = 2)]
-        public static void CloseBrowser()
+        public  void CloseBrowser()
         {
-            WebDriver.Driver.Quit();
+            webDriver.Quit();
             
 
         }
