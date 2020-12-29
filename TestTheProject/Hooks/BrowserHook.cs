@@ -1,10 +1,12 @@
-﻿
-using BoDi;
+﻿using BoDi;
 using FrameWork.Base;
+using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using TechTalk.SpecFlow;
 using WebDriverManager;
@@ -18,10 +20,12 @@ namespace TestTestFrame.Hooks
         private readonly IObjectContainer oBjectContainer;
 
         private IWebDriver webDriver;
-
-        public BrowserHooks(IObjectContainer _oBjectContainer)
+        private readonly ScenarioContext scenarioContext;
+        private static string pathString;
+        public BrowserHooks(IObjectContainer _oBjectContainer, ScenarioContext _scenarioContext)
         {
             oBjectContainer = _oBjectContainer;
+            scenarioContext = _scenarioContext;
         }
 
         [BeforeScenario(Order = 2)]
@@ -29,25 +33,41 @@ namespace TestTestFrame.Hooks
         {
             new DriverManager().SetUpDriver(new ChromeConfig());
             ChromeOptions option = new ChromeOptions();
-            option.AddArgument("--headless");
+            //option.AddArgument("--headless");
             webDriver = new ChromeDriver(option);
             webDriver.Manage().Window.Maximize();
-            webDriver.Navigate().GoToUrl("https://www.bbc.co.uk/");
+            webDriver.Navigate().GoToUrl("http://automationpractice.com/");
             oBjectContainer.RegisterInstanceAs<IWebDriver>(webDriver);
 
         }
+
         [AfterScenario(Order = 2)]
-        public  void CloseBrowser()
+        public void CloseBrowser()
         {
             webDriver.Quit();
-            
 
         }
 
-        //[AfterTestRun]
-        //public void EndBrowser()
-        //{
-        //    WebDriver.Driver.Close();
-        //}
+        [AfterStep(Order = 3)]
+        public void CaptureFailedStepScreenshot()
+        {
+            if (scenarioContext.TestError != null)
+            {
+                var solutionDir = Path.GetDirectoryName(Path.GetDirectoryName(TestContext.CurrentContext.TestDirectory));
+                var file = Path.Combine(solutionDir, "../..", " Fail Screenshots");
+                var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
+                Screenshot ss = ((ITakesScreenshot)webDriver).GetScreenshot();
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                ss.SaveAsFile(path + "/screenshot.png", ScreenshotImageFormat.Png);
+
+            }
+
+        }
+
+
+
     }
 }
