@@ -31,7 +31,7 @@ namespace TestTestFrame.Hooks
         [BeforeScenario(Order = 2)]
         public void startBrowser()
         {
-            new DriverManager().SetUpDriver(new ChromeConfig());
+            new DriverManager().SetUpDriver(new ChromeConfig());            
             ChromeOptions option = new ChromeOptions();
             //option.AddArgument("--headless");
             webDriver = new ChromeDriver(option);
