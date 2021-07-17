@@ -4,7 +4,6 @@ using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using TestTheProject.PageObjects;
-using UITests_Package.Utils;
 
 namespace TestTheProject.Steps
 {
@@ -94,12 +93,17 @@ namespace TestTheProject.Steps
         [When(@"I populate all required fields and click register")]
         public void WhenIPopulateAllRequiredFieldsAndClickRegister(Table table)            
         {
-            var accountReg = table.CreateInstance <RegisterationData>();
-
-            CurrentPage.As<AccountsPage>().completeRegisteration(accountReg.FirstName,accountReg.LastName,
-                accountReg.Password, accountReg.FirstName, accountReg.LastName, accountReg.Company, accountReg.Address, accountReg.City,
-                accountReg.PostCode, accountReg.HomePhone, accountReg.Mobilephone, accountReg.AddressAlias)
+            //Slightly easier to manage and scalable when using a foreach loop
+            // Example below, if we decided to include more rows on the table, we can iterate using index
+            // E.g row[Firstname][1] for the second row 
+            foreach (var row in table.Rows)
+            {
+                CurrentPage.As<AccountsPage>().completeRegisteration(row["FirstName"], row["LastName"],
+                row["Password"], row["FirstName"], row["LastName"], row["Company"], row["Address"], row["City"],
+                row["PostCode"], row["HomePhone"], row["Mobilephone"], row["AddressAlias"])
                 .clickRegisterAccount();
+            }
+            
         }
 
         [Then(@"an account will be created successfully")]
