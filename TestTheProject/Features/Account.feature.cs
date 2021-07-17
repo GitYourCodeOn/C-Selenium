@@ -80,7 +80,7 @@ namespace TestTheProject.Features
         public virtual void FeatureBackground()
         {
 #line 6
- #line hidden
+#line hidden
 #line 7
  testRunner.Given("I navigate to the Sign in page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
@@ -96,7 +96,7 @@ namespace TestTheProject.Features
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Account Form can only accept valid information", null, tagsOfScenario, argumentsOfScenario);
 #line 10
- this.ScenarioInitialize(scenarioInfo);
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
             bool isFeatureIgnored = default(bool);
@@ -116,7 +116,7 @@ namespace TestTheProject.Features
             {
                 this.ScenarioStart();
 #line 6
- this.FeatureBackground();
+this.FeatureBackground();
 #line hidden
 #line 11
  testRunner.And("I enter \'abcd12@yandeTesting.com\' email address on registeration", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -141,7 +141,7 @@ namespace TestTheProject.Features
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Invalid information message will produce", null, tagsOfScenario, argumentsOfScenario);
 #line 16
- this.ScenarioInitialize(scenarioInfo);
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
             bool isFeatureIgnored = default(bool);
@@ -161,7 +161,7 @@ namespace TestTheProject.Features
             {
                 this.ScenarioStart();
 #line 6
- this.FeatureBackground();
+this.FeatureBackground();
 #line hidden
 #line 17
  testRunner.And("I enter \'sdsdsgdfd43434352422343\' email address on registeration", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -186,7 +186,7 @@ namespace TestTheProject.Features
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Invalid data not accepted", null, tagsOfScenario, argumentsOfScenario);
 #line 22
- this.ScenarioInitialize(scenarioInfo);
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
             bool isFeatureIgnored = default(bool);
@@ -206,7 +206,7 @@ namespace TestTheProject.Features
             {
                 this.ScenarioStart();
 #line 6
- this.FeatureBackground();
+this.FeatureBackground();
 #line hidden
 #line 23
  testRunner.And("I enter \'abcd@yandeTesting.com\' email address on registeration", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -235,7 +235,7 @@ namespace TestTheProject.Features
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Account registeration form can only accept valid information", null, tagsOfScenario, argumentsOfScenario);
 #line 29
- this.ScenarioInitialize(scenarioInfo);
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
             bool isFeatureIgnored = default(bool);
@@ -255,7 +255,7 @@ namespace TestTheProject.Features
             {
                 this.ScenarioStart();
 #line 6
- this.FeatureBackground();
+this.FeatureBackground();
 #line hidden
 #line 30
  testRunner.And("I enter \'abcdhh132@yandeTesting.com\' email address on registeration", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -264,31 +264,42 @@ namespace TestTheProject.Features
  testRunner.And("I select create account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "FirstName",
-                            "LastName",
-                            "Password",
-                            "Company",
-                            "Address",
-                            "City",
-                            "PostCode",
-                            "HomePhone",
-                            "Mobilephone",
-                            "AddressAlias"});
+                            "Field",
+                            "Value"});
                 table1.AddRow(new string[] {
-                            "TestName",
-                            "TestLastName",
-                            "passwordmycompany",
-                            "Argos",
-                            "10 James street",
-                            "London",
-                            "10000",
-                            "012345678987",
-                            "012345678987",
+                            "FirstName",
+                            "TestFirstName"});
+                table1.AddRow(new string[] {
+                            "LastName",
+                            "TestLastName"});
+                table1.AddRow(new string[] {
+                            "Password",
+                            "passwordmycompany"});
+                table1.AddRow(new string[] {
+                            "Company",
+                            "Argos"});
+                table1.AddRow(new string[] {
+                            "Address",
+                            "10 James street"});
+                table1.AddRow(new string[] {
+                            "City",
+                            "London"});
+                table1.AddRow(new string[] {
+                            "PostCode",
+                            "10000"});
+                table1.AddRow(new string[] {
+                            "HomePhone",
+                            "012345678987"});
+                table1.AddRow(new string[] {
+                            "Mobilephone",
+                            "072345678987"});
+                table1.AddRow(new string[] {
+                            "AddressAlias",
                             "jamesby"});
 #line 32
  testRunner.When("I populate all required fields and click register", ((string)(null)), table1, "When ");
 #line hidden
-#line 35
+#line 44
  testRunner.Then("an account will be created successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

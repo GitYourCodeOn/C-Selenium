@@ -1,6 +1,7 @@
 ﻿using FrameWork.Base;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using System.Collections.Generic;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using TestTheProject.PageObjects;
@@ -96,14 +97,25 @@ namespace TestTheProject.Steps
             //Slightly easier to manage and scalable when using a foreach loop
             // Example below, if we decided to include more rows on the table, we can iterate using index
             // E.g row[Firstname][1] for the second row 
-            foreach (var row in table.Rows)
+            /*foreach (var row in table.Rows)
             {
                 CurrentPage.As<AccountsPage>().completeRegisteration(row["FirstName"], row["LastName"],
                 row["Password"], row["FirstName"], row["LastName"], row["Company"], row["Address"], row["City"],
                 row["PostCode"], row["HomePhone"], row["Mobilephone"], row["AddressAlias"])
                 .clickRegisterAccount();
+            }*/
+
+            //This is for a vertical table which is key, value pairing and more suitable
+            var dict = new Dictionary<string, string>();
+            foreach (var row in table.Rows)
+            {
+                dict.Add(row[0], row[1]);
             }
-            
+
+            CurrentPage.As<AccountsPage>().completeRegisteration(dict["FirstName"], dict["LastName"],
+               dict["Password"], dict["FirstName"], dict["LastName"], dict["Company"], dict["Address"], dict["City"],
+               dict["PostCode"], dict["HomePhone"], dict["Mobilephone"], dict["AddressAlias"])
+               .clickRegisterAccount();
         }
 
         [Then(@"an account will be created successfully")]
