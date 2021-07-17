@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System.Collections.Generic;
+using System.Linq;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using TestTheProject.PageObjects;
@@ -106,15 +107,11 @@ namespace TestTheProject.Steps
             }*/
 
             //This is for a vertical table which is key, value pairing and more suitable
-            var dict = new Dictionary<string, string>();
-            foreach (var row in table.Rows)
-            {
-                dict.Add(row[0], row[1]);
-            }
+            var data = table.Rows.ToDictionary(r => r["Field"], r => r["Value"]);
 
-            CurrentPage.As<AccountsPage>().completeRegisteration(dict["FirstName"], dict["LastName"],
-               dict["Password"], dict["FirstName"], dict["LastName"], dict["Company"], dict["Address"], dict["City"],
-               dict["PostCode"], dict["HomePhone"], dict["Mobilephone"], dict["AddressAlias"])
+            CurrentPage.As<AccountsPage>().completeRegisteration(data["FirstName"], data["LastName"],
+               data["Password"], data["FirstName"], data["LastName"], data["Company"], data["Address"], data["City"],
+               data["PostCode"], data["HomePhone"], data["Mobilephone"], data["AddressAlias"])
                .clickRegisterAccount();
         }
 
