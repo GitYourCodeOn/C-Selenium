@@ -26,19 +26,24 @@ Scenario: Invalid data not accepted
 	Then an invalid data banner will appear
 
 @Testplan4d
-Scenario: Account registeration form can only accept valid information
-	And I enter 'abcdhh132@yandeTesting.com' email address on registeration
+Scenario Outline: Account registeration form can only accept valid information <Description>
+	And I enter '<Email>' email address on registeration
 	And I select create account
 	When I populate all required fields and click register
-		| Field        | Value             |
-		| FirstName    | TestFirstName     |
-		| LastName     | TestLastName      |
-		| Password     | passwordmycompany |
-		| Company      | Argos             |
-		| Address      | 10 James street   |
-		| City         | London            |
-		| PostCode     | 10000             |
-		| HomePhone    | 012345678987      |
-		| Mobilephone  | 072345678987      |
-		| AddressAlias | jamesby           |
+		| Field        | Value          |
+		| FirstName    | <FirstName>    |
+		| LastName     | <LastName>     |
+		| Password     | <Password>     |
+		| Company      | <Company>      |
+		| Address      | <Address>      |
+		| City         | <City>         |
+		| PostCode     | <PostCode>     |
+		| HomePhone    | <HomePhone>    |
+		| Mobilephone  | <Mobilephone>  |
+		| AddressAlias | <AddressAlias> |
 	Then an account will be created successfully
+
+	Examples:
+		| Description      | Email            | FirstName | LastName | Password | Company  | Address  | City | PostCode | HomePhone | Mobilephone | AddressAlias |
+		| correct data 1st | fdffddf@zzxzx.   | ghghg     | ghg      | GGG3434!     | ghghg    | 32323232 | sdsd | 00000    | 0232323   | 0343434     | xcxc         |
+		| correct data 2nd | fdffddf@dfdfdfd. | dfdfdfd   | sdsdsds  | sdsdsF23!  | sdsdsdsd | 32323232 | sdsd | 00000    | 0232323   | 0343434     | xcxc         |

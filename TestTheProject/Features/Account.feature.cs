@@ -226,14 +226,33 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Account registeration form can only accept valid information")]
+        [NUnit.Framework.DescriptionAttribute("Account registeration form can only accept valid information <Description>")]
         [NUnit.Framework.CategoryAttribute("Testplan4d")]
-        public virtual void AccountRegisterationFormCanOnlyAcceptValidInformation()
+        [NUnit.Framework.TestCaseAttribute("correct data 1st", "fdffddf@zzxzx.", "ghghg", "ghg", "GGG3434!", "ghghg", "32323232", "sdsd", "00000", "0232323", "0343434", "xcxc", null)]
+        [NUnit.Framework.TestCaseAttribute("correct data 2nd", "fdffddf@dfdfdfd.", "dfdfdfd", "sdsdsds", "sdsdsF23!", "sdsdsdsd", "32323232", "sdsd", "00000", "0232323", "0343434", "xcxc", null)]
+        public virtual void AccountRegisterationFormCanOnlyAcceptValidInformationDescription(string description, string email, string firstName, string lastName, string password, string company, string address, string city, string postCode, string homePhone, string mobilephone, string addressAlias, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "Testplan4d"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Account registeration form can only accept valid information", null, tagsOfScenario, argumentsOfScenario);
+            argumentsOfScenario.Add("Description", description);
+            argumentsOfScenario.Add("Email", email);
+            argumentsOfScenario.Add("FirstName", firstName);
+            argumentsOfScenario.Add("LastName", lastName);
+            argumentsOfScenario.Add("Password", password);
+            argumentsOfScenario.Add("Company", company);
+            argumentsOfScenario.Add("Address", address);
+            argumentsOfScenario.Add("City", city);
+            argumentsOfScenario.Add("PostCode", postCode);
+            argumentsOfScenario.Add("HomePhone", homePhone);
+            argumentsOfScenario.Add("Mobilephone", mobilephone);
+            argumentsOfScenario.Add("AddressAlias", addressAlias);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Account registeration form can only accept valid information <Description>", null, tagsOfScenario, argumentsOfScenario);
 #line 29
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -258,7 +277,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 30
- testRunner.And("I enter \'abcdhh132@yandeTesting.com\' email address on registeration", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("I enter \'{0}\' email address on registeration", email), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 31
  testRunner.And("I select create account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -268,34 +287,34 @@ this.FeatureBackground();
                             "Value"});
                 table1.AddRow(new string[] {
                             "FirstName",
-                            "TestFirstName"});
+                            string.Format("{0}", firstName)});
                 table1.AddRow(new string[] {
                             "LastName",
-                            "TestLastName"});
+                            string.Format("{0}", lastName)});
                 table1.AddRow(new string[] {
                             "Password",
-                            "passwordmycompany"});
+                            string.Format("{0}", password)});
                 table1.AddRow(new string[] {
                             "Company",
-                            "Argos"});
+                            string.Format("{0}", company)});
                 table1.AddRow(new string[] {
                             "Address",
-                            "10 James street"});
+                            string.Format("{0}", address)});
                 table1.AddRow(new string[] {
                             "City",
-                            "London"});
+                            string.Format("{0}", city)});
                 table1.AddRow(new string[] {
                             "PostCode",
-                            "10000"});
+                            string.Format("{0}", postCode)});
                 table1.AddRow(new string[] {
                             "HomePhone",
-                            "012345678987"});
+                            string.Format("{0}", homePhone)});
                 table1.AddRow(new string[] {
                             "Mobilephone",
-                            "072345678987"});
+                            string.Format("{0}", mobilephone)});
                 table1.AddRow(new string[] {
                             "AddressAlias",
-                            "jamesby"});
+                            string.Format("{0}", addressAlias)});
 #line 32
  testRunner.When("I populate all required fields and click register", ((string)(null)), table1, "When ");
 #line hidden

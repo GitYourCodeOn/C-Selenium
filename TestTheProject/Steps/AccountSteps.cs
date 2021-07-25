@@ -107,11 +107,11 @@ namespace TestTheProject.Steps
             }*/
 
             //This is for a vertical table which is key, value pairing and more suitable
-            var data = table.Rows.ToDictionary(r => r["Field"], r => r["Value"]);
+            var x = table.Rows.ToDictionary(r => r["Field"], r => r["Value"]);
 
-            CurrentPage.As<AccountsPage>().completeRegisteration(data["FirstName"], data["LastName"],
-               data["Password"], data["FirstName"], data["LastName"], data["Company"], data["Address"], data["City"],
-               data["PostCode"], data["HomePhone"], data["Mobilephone"], data["AddressAlias"])
+            CurrentPage.As<AccountsPage>().completeRegisteration(x["FirstName"], x["LastName"],
+               x["Password"], x["FirstName"], x["LastName"], x["Company"], x["Address"], x["City"],
+               x["PostCode"], x["HomePhone"], x["Mobilephone"], x["AddressAlias"])
                .clickRegisterAccount();
         }
 
